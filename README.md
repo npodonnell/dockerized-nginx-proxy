@@ -6,7 +6,7 @@ Bare-bones dockerized reverse proxy. A starting point for more advanced proxy co
 
 ## Features
 
-* Uses NGINX 1.19
+* NGINX 1.19
 * Small footprint (Alpine Linux)
 * Support multiple sites
 * HTTP/2 support
