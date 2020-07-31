@@ -2,14 +2,15 @@
 
 N. P. O'Donnell, 2020
 
-Bare-bones dockerized NGINX proxy with SSL support.
+Bare-bones dockerized NGINX proxy, a starting point for more advanced proxy configurations.
 
 ## Features
 
-* Supports multiple sites
+* Small footprint (Alpine Linux)
+* Support multiple sites
+* HTTP/2 support
 * Rewrites plain HTTP URLs to HTTPS
 * Rewrites www.example.com to example.com
-* HTTP/2 support
 
 ## Usage
 
