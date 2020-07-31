@@ -1,4 +1,7 @@
 .gitignore
+.gitkeep
 .git/
+.dockerignore
+Makefile
 Dockerfile
 README.md
