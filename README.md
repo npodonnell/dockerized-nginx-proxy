@@ -2,10 +2,11 @@
 
 N. P. O'Donnell, 2020
 
-Bare-bones dockerized NGINX proxy, a starting point for more advanced proxy configurations.
+Bare-bones dockerized reverse proxy. A starting point for more advanced proxy configurations.
 
 ## Features
 
+* Uses NGINX 1.19
 * Small footprint (Alpine Linux)
 * Support multiple sites
 * HTTP/2 support
