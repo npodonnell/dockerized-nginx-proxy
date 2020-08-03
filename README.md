@@ -29,7 +29,7 @@ Build the proxy image:
 make proxy
 ```
 
-Stand up the proxy:
+Stand up / restart the proxy:
 
 ```
 make up

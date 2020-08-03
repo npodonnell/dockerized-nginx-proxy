@@ -17,7 +17,7 @@ certs:
 proxy: certs Dockerfile .dockerignore etc/**/*
 	docker build -t $(IMG_NAME) .
 
-up: proxy
+up: down proxy
 	docker create -it -p 80:80 -p 443:443 --name $(CTR_NAME) $(IMG_NAME) && \
 	docker start $(CTR_NAME)
 
