@@ -17,6 +17,12 @@ Bare-bones dockerized reverse proxy. A starting point for more advanced proxy co
 
 **Check the Makefile for docker commands !**
 
+Generate keys and certs:
+
+```
+make certs
+```
+
 Build the proxy image:
 
 ```
