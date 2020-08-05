@@ -4,14 +4,19 @@ CTR_NAME = "$(BASE_NAME)-ctr"
 DOMAIN = example.com
 RSA_BITS = 2048
 CERT_DAYS = 365
+KEY_FILE = etc/ssl/keys/$(DOMAIN).key
+CSR_FILE = $(DOMAIN).csr
+CERT_FILE = etc/ssl/certs/$(DOMAIN).crt
 
 .PHONY: clean
 
+all: certs proxy
+
 certs:
 	mkdir -p etc/ssl/keys etc/ssl/certs
-	openssl genrsa -out etc/ssl/keys/$(DOMAIN).key $(RSA_BITS) && \
-	openssl req -new -key etc/ssl/keys/$(DOMAIN).key -out $(DOMAIN).csr -subj "/CN=$(DOMAIN)" && \
-	openssl x509 -req -days $(CERT_DAYS) -in $(DOMAIN).csr -signkey etc/ssl/keys/$(DOMAIN).key -out etc/ssl/certs/$(DOMAIN).crt && \
+	[ -f $(KEY_FILE) ] || openssl genrsa -out $(KEY_FILE) $(RSA_BITS)
+	openssl req -new -key $(KEY_FILE) -out $(CSR_FILE) -subj "/CN=$(DOMAIN)"
+	[ -f $(CERT_FILE) ] || openssl x509 -req -days $(CERT_DAYS) -in $(DOMAIN).csr -signkey $(KEY_FILE) -out $(CERT_FILE)
 	rm $(DOMAIN).csr
 
 proxy: certs Dockerfile .dockerignore etc/**/*
@@ -30,4 +35,4 @@ debug:
 
 clean: down
 	-docker rmi $(IMG_NAME)
-	-rm -f etc/ssl/keys/$(DOMAIN).key etc/ssl/certs/$(DOMAIN).crt
+	-rm -f etc/ssl/keys/example.com.key etc/ssl/certs/example.com.crt
