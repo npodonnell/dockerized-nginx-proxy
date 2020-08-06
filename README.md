@@ -73,7 +73,7 @@ set-cookie: BIGipServer~CUIT~www.columbia.edu-80-pool=1311259520.20480.0000; exp
 Make sure HTTP to HTTPS redirects work too:
 
 ```
-curl -k -i -H -I "Host: example.com" http://localhost | less
+curl -k -i -L -H "Host: example.com" http://localhost | less
 ```
 
 Should result in the same thing.
